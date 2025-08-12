@@ -1,0 +1,102 @@
+:root{
+  /* Тема страницы */
+  --bg:#090f1e; --text:#fff; --muted:#9aa3b2;
+  --card:#0e162b; --card-ring:#1b2540;
+  --btn-grad: linear-gradient(112deg,#2972d6 0%,#2662cc 100%);
+  --btn-grad-hover: linear-gradient(112deg,#3a7fe0 0%,#2b6fd6 100%);
+  --radius:28px; --maxw:1120px;
+
+  /* Анимации/замок */
+  --cycle: 8s;            /* базовый цикл макета */
+  --lock-cycle: 4.8s;     /* цикл замка */
+  --open-deg: 24deg;      /* угол открытия дужки */
+  --lock-w: min(420px, 100%);
+
+  /* Цвета замка (чёрный лак, как на скрине) */
+  --shackle-top:#0a0a0a; 
+  --shackle-mid:#121821;
+  --shackle-deep:#000000;
+  --body-1:#010101; 
+  --body-2:#0c0a05;
+  --body-3:#2a230e;
+}
+
+/* ===== База страницы ===== */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,"Helvetica Neue",sans-serif;
+  min-height:100svh; display:grid; place-items:center; padding:24px; overflow:hidden;
+}
+.card{
+  width:100%; max-width:var(--maxw); background:var(--card);
+  border:1px solid var(--card-ring); border-radius:calc(var(--radius)*1.2);
+  padding:clamp(24px,3.5vw,48px); position:relative; overflow:hidden;
+}
+.card::before{
+  content:""; position:absolute; inset:-20% -10% auto -10%; height:60%;
+  background:radial-gradient(60% 80% at 20% 20%, rgba(255,255,255,.06), transparent 60%);
+}
+.row{display:grid; align-items:center; grid-template-columns:1.2fr .9fr; gap:clamp(24px,5vw,56px)}
+.eyebrow{font-weight:800; font-size:clamp(28px,5vw,56px); margin:0 0 20px}
+.lead{font-size:clamp(18px,2.2vw,22px); color:var(--muted); margin:0 0 28px; max-width:46ch}
+.q-list{margin:0 0 28px; padding:0; list-style:none}
+.q-list li{font-weight:600; font-size:clamp(18px,2.3vw,26px); margin:10px 0}
+.muted{color:var(--muted); max-width:56ch; font-size:15.5px}
+.cta{
+  margin-top:28px; display:flex; align-items:center; justify-content:center; gap:10px;
+  width:100%; border:none; border-radius:999px; background:var(--btn-grad);
+  color:#fff; font-weight:700; font-size:16px; padding:16px 28px; cursor:pointer;
+  box-shadow:0 8px 28px rgba(41,114,214,.28);
+  transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+.cta:hover{transform:translateY(-1px); background:var(--btn-grad-hover); box-shadow:0 10px 34px rgba(41,114,214,.36)}
+.cta:active{transform:translateY(0)}
+
+.lock-wrap{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    /* подгонка внутри твоего грид-столбца */
+    width:100%;
+  }
+  .lock-1x{
+    width:min(420px, 100%);
+    height:auto;
+    filter: drop-shadow(0 22px 40px rgba(0,0,0,.45));
+    animation: lock-float 6s ease-in-out infinite;
+  }
+  
+  .lock-3d{ width:min(480px,100%); height:auto; filter:drop-shadow(0 22px 40px rgba(0,0,0,.45)); }
+      .lock-3d{ animation: float 6s ease-in-out infinite; }
+      .floor-shadow{ animation: shadowPulse 6s ease-in-out infinite; transform-origin:center; }
+      .shine{ animation: shineSweep 3.8s linear infinite; will-change: transform; opacity:.72; mix-blend-mode:screen; }
+
+      /* Дужка открывается в середине цикла */
+      .shackle{
+        transform-box: fill-box;
+        transform-origin: 34% 88%;   /* ось около левого «плеча» дужки */
+        animation: shackleOpen 6s ease-in-out infinite;
+      }
+
+      @keyframes float{
+        0%,100%{ transform: translateY(0) }
+        50%{ transform: translateY(-6px) }
+      }
+      @keyframes shadowPulse{
+        0%,100%{ transform: scaleX(1); opacity:.55 }
+        50%{ transform: scaleX(.93); opacity:.4 }
+      }
+      @keyframes shineSweep{
+        0%   { transform: translateX(0) skewX(-20deg); }
+        100% { transform: translateX(760px) skewX(-20deg); }
+      }
+      /* 0-55% закрыт → 60-80% открыт → 100% снова закрыт */
+      @keyframes shackleOpen{
+        0%,55%   { transform: rotate(0deg) translate(0,0); }
+        60%,80%  { transform: rotate(-24deg) translate(10px,-12px); }
+        100%     { transform: rotate(0deg) translate(0,0); }
+      }
+
+      

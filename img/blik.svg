@@ -1,0 +1,18 @@
+<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Градиент мягкого блика -->
+    <linearGradient id="shackleHighlightGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"></stop>
+      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0.35"></stop>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"></stop>
+      <!-- Анимация лёгкого перелива -->
+      <animate attributeName="gradientTransform" values="translate(-0.08 0);translate(0.08 0);translate(-0.08 0)" dur="3.6s" repeatCount="indefinite"></animate>
+    </linearGradient>
+  </defs>
+
+  <!-- Мягкий широкий блик -->
+  <path d="M50 150c0-60 48-108 100-108s100 48 100 108" fill="none" stroke="url(#shackleHighlightGrad)" stroke-width="18" stroke-linecap="round" opacity="0.35"></path>
+
+  <!-- Узкий жёсткий блик -->
+  <path d="M50 150c0-60 48-108 100-108s100 48 100 108" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.28"></path>
+</svg>
