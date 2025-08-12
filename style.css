@@ -122,4 +122,12 @@ body{
     width: auto; /* чтобы не растягивалась на всю ширину */
     min-width: 220px;
   }
+
+  .card {
+    margin-top: 48px;   /* сверху */
+    margin-bottom: 48px; /* снизу */
+  }
 }
+
+
+
