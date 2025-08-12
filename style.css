@@ -99,4 +99,27 @@ body{
         100%     { transform: rotate(0deg) translate(0,0); }
       }
 
-      
+      @media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr; /* одна колонка */
+    gap: 32px; /* расстояние между замком и текстом */
+    text-align: center; /* центрируем текст */
+  }
+
+  .row section {
+    order: 2; /* текст ниже */
+  }
+
+  .lock-wrap {
+    order: 1; /* замок выше */
+    justify-content: center; /* по центру горизонтально */
+  }
+
+  /* Кнопка по центру */
+  .cta {
+    margin-left: auto;
+    margin-right: auto;
+    width: auto; /* чтобы не растягивалась на всю ширину */
+    min-width: 220px;
+  }
+}
